@@ -21,6 +21,8 @@ public class UnitStrategyFactory {
             } else {
                 return buildExploreStrategy(map, unit, unitManager);
             }
+        } else {
+            return null;
         }
     }
 
