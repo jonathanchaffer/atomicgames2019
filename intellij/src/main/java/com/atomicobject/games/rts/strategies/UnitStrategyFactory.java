@@ -24,7 +24,11 @@ public class UnitStrategyFactory {
                 return buildExploreStrategy(map, unit, unitManager);
             }
         } else if (unit.isBase()) {
-            return buildCreateStrategy(map, unit, unitManager);
+            var resource = unit.getUnitUpdate().getResource();
+            if (resource > 150) {
+                return buildCreateStrategy(map, unit, unitManager, "tank");
+            }
+            return null;
         }
         return null;
     }
@@ -41,7 +45,7 @@ public class UnitStrategyFactory {
         return new AttackStrategy(map, unit, unitManager);
     }
 
-    private IUnitStrategy buildCreateStrategy(Map map, Unit unit, UnitManager unitManager) {
-        return new CreateStrategy(map, unit, unitManager);
+    private IUnitStrategy buildCreateStrategy(Map map, Unit unit, UnitManager unitManager, String unitName) {
+        return new CreateStrategy(map, unit, unitManager, unitName);
     }
 }
