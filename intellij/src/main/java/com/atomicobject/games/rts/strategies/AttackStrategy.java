@@ -18,9 +18,14 @@ public class AttackStrategy implements IUnitStrategy {
     }
 
     public AICommand buildCommand(Unit unit) {
-        var loco = new Location(5, 3);
         if (unit.isTank()) {
-            return AICommand.buildShootCommand(unit, loco);
+            if(map.hasEnemies()) {
+                var enemies = map.enemyLocationsInRange(unit.getLocation(), 2);
+                return AICommand.buildShootCommand(unit, enemies.get(0));
+            }
+            else {
+                return AICommand.buildMoveCommand(unit, MapDirections.randomDirection());
+            }
         }
         else {
             return AICommand.buildMeleeCommand(unit, MapDirections.Direction.EAST);
