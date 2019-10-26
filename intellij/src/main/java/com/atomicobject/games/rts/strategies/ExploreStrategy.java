@@ -18,7 +18,7 @@ public class ExploreStrategy implements IUnitStrategy {
     }
 
     public AICommand buildCommand(Unit unit) {
-        var direction = MapDirections.randomDirection();
+        var direction = MapDirections.northDirection();
         return AICommand.buildMoveCommand(unit, direction);
     }
 
