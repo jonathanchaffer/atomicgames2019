@@ -13,10 +13,12 @@ public class UnitStrategyFactory {
     }
 
     private IUnitStrategy buildStrategy(Map map, Unit unit, UnitManager unitManager) {
-        if (unit.isMobile()) {
-            return buildExploreStrategy(map, unit, unitManager);
+        if (unit.isTank()) {
+            return new AttackStrategy(map, unit, unitManager);
         }
-        return null;
+        else {
+            return new ExploreStrategy(map, unit, unitManager);
+        }
     }
 
     private IUnitStrategy buildExploreStrategy(Map map, Unit unit, UnitManager unitManager) {
