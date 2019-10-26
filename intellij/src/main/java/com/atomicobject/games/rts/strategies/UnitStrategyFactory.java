@@ -26,7 +26,9 @@ public class UnitStrategyFactory {
         } else if (unit.isBase()) {
             return buildCreateStrategy(map, unit, unitManager);
         }
-        return null;
+        else {
+            return buildExploreStrategy(map, unit, unitManager);
+        }
     }
 
     private IUnitStrategy buildExploreStrategy(Map map, Unit unit, UnitManager unitManager) {
