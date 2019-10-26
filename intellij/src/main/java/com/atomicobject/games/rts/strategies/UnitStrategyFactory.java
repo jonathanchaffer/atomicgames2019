@@ -23,10 +23,7 @@ public class UnitStrategyFactory {
             } else {
                 return buildExploreStrategy(map, unit, unitManager);
             }
-        } else {
-            return null;
-        }
-        else if (unit.isBase()) {
+        } else if (unit.isBase()) {
             return buildCreateStrategy(map, unit, unitManager);
         }
         return null;
