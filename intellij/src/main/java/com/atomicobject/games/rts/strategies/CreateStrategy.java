@@ -24,7 +24,7 @@ public class CreateStrategy implements IUnitStrategy {
         else if (resource > 130 && unitManager.getScoutCount() < 5 && unitManager.getWorkerCount() > 8) {
             return AICommand.buildUnitCommand("scout");
         }
-        else if (resource > 500 && unitManager.getTankCount() < 3 && map.hasEnemies()) {
+        else if (resource > 500 && unitManager.getTankCount() < 2 && map.hasEnemies()) {
             return AICommand.buildUnitCommand("tank");
         }
         else {
