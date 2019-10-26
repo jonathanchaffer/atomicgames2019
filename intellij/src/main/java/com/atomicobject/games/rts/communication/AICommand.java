@@ -52,6 +52,14 @@ public class AICommand {
         return command;
     }
 
+    public static AICommand buildMeleeCommand(Unit unit, MapDirections.Direction direction) {
+        var command = new AICommand();
+        command.setCommand(AICommand.MELEE);
+        command.setUnit(unit.getId());
+        command.setDir(serializeDirection(direction));
+        return command;
+    }
+
     public static AICommand buildUnitCommand(String type) {
         var command = new AICommand();
         command.setCommand(AICommand.CREATE);
