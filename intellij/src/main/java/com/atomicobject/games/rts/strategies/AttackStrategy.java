@@ -28,14 +28,14 @@ public class AttackStrategy implements IUnitStrategy {
             if(map.hasEnemies()) {
                 var enemies = map.enemyLocationsInRange(unit.getLocation(), 2);
                 if (enemies.size() == 0) {
-                    return AICommand.buildMoveCommand(unit, direction);
+                    return AICommand.buildMoveCommand(unit, MapDirections.Direction.NONE);
                 }
                 else {
                     return AICommand.buildShootCommand(unit, enemies.get(0));
                 }
             }
             else {
-                return AICommand.buildMoveCommand(unit, direction);
+                return AICommand.buildMoveCommand(unit, MapDirections.Direction.NONE);
             }
         }
         else {
