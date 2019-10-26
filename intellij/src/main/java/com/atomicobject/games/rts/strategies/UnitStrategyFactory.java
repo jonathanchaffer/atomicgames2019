@@ -14,12 +14,20 @@ public class UnitStrategyFactory {
 
     private IUnitStrategy buildStrategy(Map map, Unit unit, UnitManager unitManager) {
         if (unit.isMobile()) {
-            return buildExploreStrategy(map, unit, unitManager);
+            if (unit.isWorker()) {
+                return buildGatherStrategy(map, unit, unitManager);
+            } else {
+                return buildExploreStrategy(map, unit, unitManager);
+            }
         }
         return null;
     }
 
     private IUnitStrategy buildExploreStrategy(Map map, Unit unit, UnitManager unitManager) {
         return new ExploreStrategy(map, unit, unitManager);
+    }
+
+    private IUnitStrategy buildGatherStrategy(Map map, Unit unit, UnitManager unitManager) {
+        return new GatherStrategy(map, unit, unitManager);
     }
 }
