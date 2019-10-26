@@ -18,10 +18,16 @@ public class UnitStrategyFactory {
                 return buildGatherStrategy(map, unit, unitManager);
             } else if (unit.isTank()) {
                 return buildAttackStrategy(map, unit, unitManager);
+            } else if (unit.isScout()) {
+                return buildExploreStrategy(map, unit, unitManager);
             } else {
                 return buildExploreStrategy(map, unit, unitManager);
             }
         }
+        else if (unit.isBase()) {
+            return buildCreateStrategy(map, unit, unitManager);
+        }
+        return null;
     }
 
     private IUnitStrategy buildExploreStrategy(Map map, Unit unit, UnitManager unitManager) {
@@ -34,5 +40,9 @@ public class UnitStrategyFactory {
 
     private IUnitStrategy buildAttackStrategy(Map map, Unit unit, UnitManager unitManager) {
         return new AttackStrategy(map, unit, unitManager);
+    }
+
+    private IUnitStrategy buildCreateStrategy(Map map, Unit unit, UnitManager unitManager) {
+        return new CreateStrategy(map, unit, unitManager);
     }
 }
