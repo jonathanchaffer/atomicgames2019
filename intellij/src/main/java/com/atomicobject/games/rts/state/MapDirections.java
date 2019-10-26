@@ -44,6 +44,8 @@ public class MapDirections {
         return DIRECTIONS.get(Random.nextInt(4));
     }
 
+    public static Direction northDirection() { return Direction.NORTH; }
+
     public static Direction turn(Direction direction) {
         return TURN_MAP.get(direction);
     }
