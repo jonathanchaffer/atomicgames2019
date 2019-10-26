@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+group 'com.atomicobject.com'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 11
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile (
+            [group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.9'],
+            [group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.9'],
+            [group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.9']
+    )
+
+//    testCompile group: 'junit', name: 'junit', version: '5.5.1'
+    test {
+        useJUnitPlatform()
+    }
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.1.0'
+    testImplementation 'org.hamcrest:hamcrest:2.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.1.0'
+}
