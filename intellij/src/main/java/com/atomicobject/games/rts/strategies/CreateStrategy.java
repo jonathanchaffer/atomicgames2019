@@ -18,13 +18,13 @@ public class CreateStrategy implements IUnitStrategy {
 
     public AICommand buildCommand(Unit unit) {
         var resource = unit.getUnitUpdate().getResource();
-        if (unitManager.getWorkerCount() < 9) {
+        if (map.hasResources() && unitManager.getWorkerCount() < 9) {
             return AICommand.buildUnitCommand("worker");
         }
-        else if (resource > 130 && unitManager.getScoutCount() < 5 && unitManager.getWorkerCount() > 8) {
+        else if (!map.hasResources() && unitManager.getScoutCount() < 2) {
             return AICommand.buildUnitCommand("scout");
         }
-        else if (resource > 500 && unitManager.getTankCount() < 2 && map.hasEnemies()) {
+        else if (resource > 500 && map.enemyLocationsInRange(unit.getLocation(), 2).size() > 0) {
             return AICommand.buildUnitCommand("tank");
         }
         else {
