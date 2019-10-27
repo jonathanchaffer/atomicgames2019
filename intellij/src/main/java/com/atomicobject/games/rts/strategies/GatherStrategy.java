@@ -34,8 +34,8 @@ public class GatherStrategy implements IUnitStrategy {
             if (map.isResourceAdjacentTo(unit.getLocation())) {
                 return AICommand.buildGatherCommand(unit, map.directionToAdjacentResource(unit.getLocation()));
             }
-            var nearestResourceLocaiton = map.resourceLocationsNearest(unit.getLocation()).get(0);
-            var path = pathfinder.findPath(unit.getLocation(), nearestResourceLocaiton, 1);
+            var resourceLocaiton = map.resourceLocationsNearest(unit.getLocation()).get(0);
+            var path = pathfinder.findPath(unit.getLocation(), resourceLocaiton, 1);
             if (path != null) {
                 var destination = path.get(0);
                 var direction = MapDirections.cardinalDirection(unit.getLocation(), destination);
